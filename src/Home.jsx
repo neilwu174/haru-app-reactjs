@@ -103,7 +103,7 @@ function Home(props) {
                   <td></td>
                   <td>
                     <button className="btn btn-link" onClick={() => deleteComponent(child.path,data.current)}>Delete</button>
-                    <button className="btn btn-link" onClick={() => props.onUpdate("unknown")}>Update</button>
+                    <button className="btn btn-link" onClick={() => props.onUpdate({"route": "unknown", "path": data.current})}>Update</button>
                   </td>
                 </tr>
             ))}
@@ -117,6 +117,16 @@ function Home(props) {
                   <td>
                   <td>
                     <button className="btn btn-link" onClick={() => deleteComponent(child.path,data.current)}>Delete</button>
+                    {child.path.includes("mp4") > 0 &&
+                      <a href={`http://localhost:8080/video.mp4?file=${child.path}`} target="_blank" rel="noopener noreferrer">
+                        Play
+                      </a>                    
+                    }
+                    {child.path.includes("jpeg") > 0 &&
+                      <a href={`/app/image?path=${child.path}`} target="_blank" rel="noopener noreferrer">
+                        Play
+                      </a>                    
+                    }
                   </td>
                   </td>
                 </tr>
